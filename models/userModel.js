@@ -1,4 +1,3 @@
-const { verify } = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
@@ -17,7 +16,7 @@ const userSchema = mongoose.Schema({
         Select: false,
     },
     verified:{
-        true: Boolean,
+        type: Boolean,
         default: false
     },
     verificationCodeValidation:{
@@ -32,4 +31,8 @@ const userSchema = mongoose.Schema({
         type: Number,
         Select: false
     }
-})
+},{
+    timstamps: true
+});
+
+module.exports = mongoose.model("User", userSchema);
